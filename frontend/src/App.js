@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Students from './pages/Students';
@@ -20,48 +20,56 @@ function Logo() {
   );
 }
 
-function Sidebar() {
+function Sidebar({ open, onClose }) {
   return (
-    <div className="sidebar">
-      <div className="sidebar-brand">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Logo />
-          <div>
-            <div style={{ fontSize: '15px', fontWeight: '800', letterSpacing: '-0.02em', color: '#fff' }}>
-              Result<span style={{ opacity: 0.35 }}>Pro</span>
-            </div>
-            <div style={{ fontSize: '10px', color: '#666', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '2px' }}>
-              School Result System
+    <>
+      <div className={`overlay${open ? ' open' : ''}`} onClick={onClose} />
+      <div className={`sidebar${open ? ' open' : ''}`}>
+        <div className="sidebar-brand">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Logo />
+            <div>
+              <div style={{ fontSize: '15px', fontWeight: '800', letterSpacing: '-0.02em', color: '#fff' }}>
+                Result<span style={{ opacity: 0.35 }}>Pro</span>
+              </div>
+              <div style={{ fontSize: '10px', color: '#666', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '2px' }}>
+                School Result System
+              </div>
             </div>
           </div>
         </div>
+        <nav className="sidebar-nav">
+          {[
+            { to: '/', icon: '▦', label: 'Dashboard', end: true },
+            { to: '/students', icon: '◉', label: 'Students' },
+            { to: '/courses', icon: '◈', label: 'Courses' },
+            { to: '/grades', icon: '◎', label: 'Assign Grades' },
+            { to: '/transcript', icon: '▤', label: 'Transcripts' },
+          ].map(({ to, icon, label, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+              onClick={onClose}
+            >
+              <span className="nav-icon">{icon}</span> {label}
+            </NavLink>
+          ))}
+        </nav>
       </div>
-      <nav className="sidebar-nav">
-        <NavLink to="/" end className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          <span className="nav-icon">▦</span> Dashboard
-        </NavLink>
-        <NavLink to="/students" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          <span className="nav-icon">◉</span> Students
-        </NavLink>
-        <NavLink to="/courses" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          <span className="nav-icon">◈</span> Courses
-        </NavLink>
-        <NavLink to="/grades" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          <span className="nav-icon">◎</span> Assign Grades
-        </NavLink>
-        <NavLink to="/transcript" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-          <span className="nav-icon">▤</span> Transcripts
-        </NavLink>
-      </nav>
-    </div>
+    </>
   );
 }
 
 export default function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="layout">
-        <Sidebar />
+        <button className="hamburger" onClick={() => setSidebarOpen(true)}>☰</button>
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main className="main">
           <Routes>
             <Route path="/" element={<Dashboard />} />

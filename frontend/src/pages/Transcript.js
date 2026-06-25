@@ -63,24 +63,26 @@ export default function Transcript() {
           </div>
           {transcript.results.length === 0 ? <div className="empty-state">No grades recorded yet.</div> : (
             <>
-              <table>
-                <thead>
-                  <tr><th>Code</th><th>Title</th><th>Units</th><th>Score</th><th>Grade</th><th>Grade Point</th><th>Weighted</th></tr>
-                </thead>
-                <tbody>
-                  {transcript.results.map((r) => (
-                    <tr key={r.courseCode}>
-                      <td style={{ fontFamily: 'monospace', fontWeight: 700 }}>{r.courseCode}</td>
-                      <td>{r.courseTitle}</td>
-                      <td>{r.creditUnit}</td>
-                      <td>{r.score}</td>
-                      <td><span className={`grade-badge grade-${r.grade}`}>{r.grade}</span></td>
-                      <td>{r.gradePoint.toFixed(1)}</td>
-                      <td>{r.weightedPoint.toFixed(1)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="table-wrapper">
+                <table>
+                  <thead>
+                    <tr><th>Code</th><th>Title</th><th>Units</th><th>Score</th><th>Grade</th><th>Grade Point</th><th>Weighted</th></tr>
+                  </thead>
+                  <tbody>
+                    {transcript.results.map((r) => (
+                      <tr key={r.courseCode}>
+                        <td style={{ fontFamily: 'monospace', fontWeight: 700 }}>{r.courseCode}</td>
+                        <td>{r.courseTitle}</td>
+                        <td>{r.creditUnit}</td>
+                        <td>{r.score}</td>
+                        <td><span className={`grade-badge grade-${r.grade}`}>{r.grade}</span></td>
+                        <td>{r.gradePoint.toFixed(1)}</td>
+                        <td>{r.weightedPoint.toFixed(1)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <div style={{ marginTop: 16, padding: '12px 14px', background: '#f5f5f5', borderRadius: 6, fontSize: 13 }}>
                 <strong>Total Credit Units:</strong> {transcript.summary.totalCreditUnits} &nbsp;|&nbsp;
                 <strong>Total Weighted Points:</strong> {transcript.summary.totalWeightedPoints}

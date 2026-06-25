@@ -76,23 +76,25 @@ export default function Courses() {
       <div className="card">
         <div className="card-title">All Courses ({courses.length})</div>
         {courses.length === 0 ? <div className="empty-state">No courses added yet.</div> : (
-          <table>
-            <thead>
-              <tr><th>Code</th><th>Title</th><th>Units</th><th>Semester</th><th>Session</th><th></th></tr>
-            </thead>
-            <tbody>
-              {courses.map((c) => (
-                <tr key={c.id}>
-                  <td style={{ fontFamily: 'monospace', fontWeight: 700 }}>{c.courseCode}</td>
-                  <td>{c.courseTitle}</td>
-                  <td>{c.creditUnit}</td>
-                  <td>{c.semester} Semester</td>
-                  <td>{c.session}</td>
-                  <td><button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Remove</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr><th>Code</th><th>Title</th><th>Units</th><th>Semester</th><th>Session</th><th></th></tr>
+              </thead>
+              <tbody>
+                {courses.map((c) => (
+                  <tr key={c.id}>
+                    <td style={{ fontFamily: 'monospace', fontWeight: 700 }}>{c.courseCode}</td>
+                    <td>{c.courseTitle}</td>
+                    <td>{c.creditUnit}</td>
+                    <td>{c.semester} Semester</td>
+                    <td>{c.session}</td>
+                    <td><button className="btn btn-danger" onClick={() => handleDelete(c.id)}>Remove</button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

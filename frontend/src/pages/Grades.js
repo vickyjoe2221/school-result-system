@@ -95,23 +95,25 @@ export default function Grades() {
       <div className="card">
         <div className="card-title">All Grade Records ({enrollments.length})</div>
         {enrollments.length === 0 ? <div className="empty-state">No grades assigned yet.</div> : (
-          <table>
-            <thead>
-              <tr><th>Student</th><th>Course</th><th>Score</th><th>Grade</th><th>Grade Point</th><th></th></tr>
-            </thead>
-            <tbody>
-              {enrollments.map((e) => (
-                <tr key={e.id}>
-                  <td>{e.student.studentId} — {e.student.firstName} {e.student.lastName}</td>
-                  <td style={{ fontFamily: 'monospace' }}>{e.course.courseCode}</td>
-                  <td>{e.score}</td>
-                  <td><span className={`grade-badge grade-${e.grade}`}>{e.grade}</span></td>
-                  <td>{e.gradePoint.toFixed(1)}</td>
-                  <td><button className="btn btn-danger" onClick={() => handleDelete(e.id)}>Remove</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="table-wrapper">
+            <table>
+              <thead>
+                <tr><th>Student</th><th>Course</th><th>Score</th><th>Grade</th><th>Grade Point</th><th></th></tr>
+              </thead>
+              <tbody>
+                {enrollments.map((e) => (
+                  <tr key={e.id}>
+                    <td>{e.student.studentId} — {e.student.firstName} {e.student.lastName}</td>
+                    <td style={{ fontFamily: 'monospace' }}>{e.course.courseCode}</td>
+                    <td>{e.score}</td>
+                    <td><span className={`grade-badge grade-${e.grade}`}>{e.grade}</span></td>
+                    <td>{e.gradePoint.toFixed(1)}</td>
+                    <td><button className="btn btn-danger" onClick={() => handleDelete(e.id)}>Remove</button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
