@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const API = axios.create({ baseURL: 'https://school-result-system-production-0287.up.railway.app/api' });
 
 export const getStudents = () => API.get('/students');
 export const getStudent = (id) => API.get(`/students/${id}`);
