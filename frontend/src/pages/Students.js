@@ -62,12 +62,18 @@ export default function Students() {
             <label>Email</label>
             <input name="email" value={form.email} onChange={handleChange} placeholder="student@email.com" />
           </div>
-          <div className="form-group">
+<div className="form-group">
             <label>Department</label>
-            <select name="department" value={form.department} onChange={handleChange}>
-              <option value="">Select department</option>
-              {DEPARTMENTS.map((d) => <option key={d} value={d}>{d}</option>)}
-            </select>
+            <input
+              name="department"
+              value={form.department}
+              onChange={handleChange}
+              placeholder="e.g. Software Engineering"
+              list="dept-list"
+            />
+            <datalist id="dept-list">
+              {DEPARTMENTS.map((d) => <option key={d} value={d} />)}
+            </datalist>
           </div>
           <div className="form-group">
             <label>Level</label>

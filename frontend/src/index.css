@@ -453,3 +453,130 @@ tr:hover td { background: var(--gray-100); }
     width: auto;
   }
 }
+@media print {
+  .sidebar,
+  .hamburger,
+  .page-header,
+  .card:first-of-type,
+  .form-actions,
+  .btn,
+  .nav-link {
+    display: none !important;
+  }
+
+  .main {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+  .layout {
+    display: block !important;
+  }
+
+  .card {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    background: white !important;
+    font-size: 12px !important;
+  }
+
+  .transcript-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #000;
+  }
+
+  .transcript-field {
+    font-size: 12px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    min-width: unset;
+  }
+
+  th {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    font-size: 10px;
+    color: #000;
+  }
+
+  td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    color: #000;
+  }
+
+  .gpa-display {
+    background: #000 !important;
+    color: #fff !important;
+    padding: 16px;
+    border-radius: 4px;
+    margin-top: 16px;
+    text-align: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .gpa-display .gpa-number {
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  .gpa-display .gpa-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa !important;
+  }
+
+  .grade-badge {
+    font-weight: 800;
+    font-size: 11px;
+    padding: 1px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #000;
+  }
+
+  .print-header h2 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .print-header p {
+    font-size: 11px;
+    color: #666;
+  }
+}

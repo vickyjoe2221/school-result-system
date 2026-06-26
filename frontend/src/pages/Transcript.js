@@ -53,7 +53,11 @@ export default function Transcript() {
         </div>
       </div>
       {transcript && (
-        <div className="card">
+<div className="card">
+          <div className="print-header">
+            <h2>RESULTPRO</h2>
+            <p>School Result Processing System — Official Academic Transcript</p>
+          </div>
           <div className="card-title">Academic Transcript</div>
           <div className="transcript-header">
             <div className="transcript-field">Student ID: <span>{transcript.student.studentId}</span></div>
