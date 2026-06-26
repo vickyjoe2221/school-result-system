@@ -580,3 +580,8 @@ tr:hover td { background: var(--gray-100); }
     color: #666;
   }
 }
+select option:checked,
+select option:hover {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+}
